@@ -20,13 +20,13 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         
-        RaycastHit hit;
-        if (Physics.Raycast(RayOrigin.position,RayOrigin.forward,out hit,1f))
-        {
-            curruntTilepos = hit.transform.position ;
-        }
-        RaycastHit[] hits;
-        hits = Physics.RaycastAll(RayOrigin.transform.position, RayOrigin.forward, 30f);
+        //RaycastHit hit;
+        //if (Physics.Raycast(RayOrigin.position,RayOrigin.forward,out hit,1f))
+        //{
+        //    curruntTilepos = hit.transform.position ;
+        //}
+        //RaycastHit[] hits;
+        //hits = Physics.RaycastAll(RayOrigin.transform.position, RayOrigin.forward, 30f);
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = horizontalInput == 0 ? Input.GetAxisRaw("Vertical") : 0;
         inputVector = new Vector3(horizontalInput,0,verticalInput);
@@ -39,19 +39,19 @@ public class PlayerMovement : MonoBehaviour
             float angle = (Mathf.Atan2(verticalInput, -horizontalInput) * Mathf.Rad2Deg) - 90;
             RayOrigin.transform.rotation = Quaternion.AngleAxis(angle, Vector3.up); 
         }
-        Debug.DrawRay(RayOrigin.position, RayOrigin.transform.forward *30, Color.green);
-        Debug.Log(hits.Length);
+        //Debug.DrawRay(RayOrigin.position, RayOrigin.transform.forward *30, Color.green);
+        //Debug.Log(hits.Length);
         //if(hits.Length > 0) Debug.Log(hits[hits.Length - 1].transform.position);
-        if (hits.Length <= 3)
-        {
-            if (inputVector.z != 0 && inputVector.x == 0)
-            {
-                Grasstilespawner.Instance.AddTiles(hits[hits.Length - 1].transform.position + inputVector * 10f, Vector3.right);
-            }
-            else if (inputVector.x != 0 && inputVector.z == 0)
-            {
-                Grasstilespawner.Instance.AddTiles(hits[hits.Length - 1].transform.position + inputVector * 10f, Vector3.forward);
-            }
-        }
+        //if (hits.Length <= 3)
+        //{
+        //    if (inputVector.z != 0 && inputVector.x == 0)
+        //    {
+        //        Grasstilespawner.Instance.AddTiles(hits[hits.Length - 1].transform.position + inputVector * 10f, Vector3.right);
+        //    }
+        //    else if (inputVector.x != 0 && inputVector.z == 0)
+        //    {
+        //        Grasstilespawner.Instance.AddTiles(hits[hits.Length - 1].transform.position + inputVector * 10f, Vector3.forward);
+        //    }
+        //}
     }
 }

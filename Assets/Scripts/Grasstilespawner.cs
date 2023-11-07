@@ -217,5 +217,31 @@ public class Grasstilespawner : MonoBehaviour
             SpawnTreeSingleTile(temp6.transform.position);
         }
     }
-    
+   public void addSingleTile(Vector3 pos,bool isZ,int val)
+    {
+        Vector3 temppos = isZ ? pos + new Vector3(0, 0, val) : pos + new Vector3(val, 0, 0);
+        if (!tilePos.Exists(npos => npos.x == temppos.x && npos.z == temppos.z))
+        {
+            Debug.Log("jbvjwebcicv");
+
+            if (isZ)
+            {
+                GameObject temp1 = Instantiate(levelPrefab, pos + new Vector3(0, 0, val), Quaternion.identity);
+                temp1.isStatic = true;
+                temp1.transform.SetParent(TileParent);
+                GroundtileList.Add(temp1);
+                tilePos.Add(temp1.transform.position);
+                SpawnTreeSingleTile(temp1.transform.position);
+            }
+            else
+            {
+                GameObject temp1 = Instantiate(levelPrefab, pos + new Vector3(val, 0, 0), Quaternion.identity);
+                temp1.isStatic = true;
+                temp1.transform.SetParent(TileParent);
+                GroundtileList.Add(temp1);
+                tilePos.Add(temp1.transform.position);
+                SpawnTreeSingleTile(temp1.transform.position);
+            }
+        }
+    }
 }
