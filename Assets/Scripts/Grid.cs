@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Grid
@@ -38,7 +36,7 @@ public class Grid
 
     public Vector3 GetWorldPosition(float x, float y)
     {
-        return new Vector3 (x*m_cellSpacingX, y*m_cellSpacingY, 0) + m_originPosition;
+        return new Vector3 (x*m_cellSpacingX-m_cellSpacingX,  0, y * m_cellSpacingY-m_cellSpacingY) + m_originPosition;
     }
 
 
